@@ -2,7 +2,7 @@
 
 > engramx's AST code-graph + bi-temporal mistakes, as auto-discoverable Claude Code Skills.
 
-**v0.1.0 "Memory Preview"** ships the hero skill: `engram-mistakes`. The remaining four skills (`engram-query`, `engram-gods`, `engram-gen`, `engram-learn`) land in v0.2.0 and v0.3.0 — see the roadmap below.
+**v0.2.0 "Structural Bootstrap"** — three active skills, two queued for v0.3.0. The pack now covers the full "before-you-make-the-edit" loop: orient the agent in a new repo, answer structural questions, surface past mistakes. All under 5 KB of context.
 
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
 [![npm](https://img.shields.io/badge/npm-engram--skill--pack-cb3837)](https://www.npmjs.com/package/engram-skill-pack)
@@ -53,8 +53,8 @@ The init command auto-installs the Sentinel hook into the project's `.claude/set
 | Skill | Status | What it does |
 |---|---|---|
 | **engram-mistakes** | ✅ v0.1.0 | Surface bi-temporal mistakes (the rave moment — auto-fires PreToolUse) |
-| engram-query | 🚧 v0.2.0 | Natural-language code-graph queries |
-| engram-gods | 🚧 v0.2.0 | Surface the most-important entities in this repo |
+| **engram-query** | ✅ v0.2.0 | Natural-language structural queries — replaces ad-hoc Grep |
+| **engram-gods** | ✅ v0.2.0 | Bootstrap repo understanding — top-N entities by importance |
 | engram-gen | 🚧 v0.3.0 | Generate task-grounded context prompts |
 | engram-learn | 🚧 v0.3.0 | Capture bi-temporal mistakes manually (interactive 4-field prompt) |
 
@@ -94,11 +94,11 @@ Zero egress in this pack. engramx (peer dependency) routes all graph data throug
 
 ## Roadmap
 
-- **v0.1.0** (today) — Memory Preview: `engram-mistakes` only
-- **v0.2.0** (~7 days) — adds `engram-query` + `engram-gods`. Same wrapper pattern, expanded surface.
-- **v0.3.0** (~14 days) — adds `engram-gen` + `engram-learn`. Includes interactive 4-field bi-temporal capture prompt.
-- **v0.4.0** — AAA-elevation pass on all five skills (full Layer 1-7 conformance + cross-ecosystem sync to CT 300 / CT 100).
-- **v1.0.0** — Marketplace launch, comparison-benchmark page goes live, Show HN.
+- **v0.1.0** (2026-05-18) — Memory Preview: `engram-mistakes` only ✅
+- **v0.2.0** (2026-05-18) — Structural Bootstrap: adds `engram-query` + `engram-gods` ✅
+- **v0.3.0** (~7 days) — Capture Layer: adds `engram-gen` + `engram-learn` with the interactive 4-field bi-temporal prompt
+- **v0.4.0** — AAA-elevation pass (full Layer 1-7 across all 5 skills + cross-ecosystem sync)
+- **v1.0.0** — Marketplace launch, comparison-benchmark page (`engramx-bench.dev`) live, Show HN
 
 ## Related repos
 

@@ -1,7 +1,7 @@
 {
   "name": "engram-skill-pack",
-  "version": "0.1.0",
-  "description": "engramx's AST code-graph + bi-temporal mistakes as auto-discoverable Claude Code Skills",
+  "version": "0.2.0",
+  "description": "engramx's bi-temporal mistakes + structural code-graph as auto-discoverable Claude Code Skills. Catches recurring mistakes before agents repeat them. Apache 2.0, local SQLite, zero cloud.",
   "license": "Apache-2.0",
   "author": "Nicholas Ashkar <nicholas.ashkar@gmail.com> (@NickCirv)",
   "repository": {
@@ -19,12 +19,22 @@
   "keywords": [
     "claude-code",
     "claude-skills",
+    "claude-code-hooks",
     "engram",
     "engramx",
     "ai-memory",
+    "agent-memory",
     "ast",
     "mcp",
+    "knowledge-graph",
+    "context-engineering",
+    "context-spine",
+    "agent-tools",
+    "token-optimization",
     "developer-tools",
+    "llm",
+    "typescript",
+    "hooks",
     "npm-package",
     "bi-temporal"
   ],

@@ -1,6 +1,6 @@
 {
   "name": "engram-skill-pack",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "engramx's AST code-graph + bi-temporal mistakes as auto-discoverable Claude Code Skills",
   "author": "Nicholas Ashkar (@NickCirv)",
   "license": "Apache-2.0",
@@ -29,13 +29,32 @@
     },
     {
       "id": "engram-query",
-      "status": "placeholder",
-      "summary": "Natural-language code-graph queries — lands in v0.2.0"
+      "status": "active",
+      "path": "skills/engram-query/SKILL.md",
+      "summary": "Natural-language structural queries over your repo's code graph — replaces ad-hoc Grep with AST-aware lookups at a fraction of the token cost",
+      "triggers": [
+        "where is",
+        "what calls",
+        "explain the architecture",
+        "show me dependencies",
+        "what depends on",
+        "find all"
+      ]
     },
     {
       "id": "engram-gods",
-      "status": "placeholder",
-      "summary": "Surface the most-important entities in this repo — lands in v0.2.0"
+      "status": "active",
+      "path": "skills/engram-gods/SKILL.md",
+      "summary": "Surface the most-important entities in a repo — bootstrap repo understanding in seconds, not turns",
+      "triggers": [
+        "where do i start",
+        "where should i start",
+        "what's important",
+        "what are the main",
+        "executive summary",
+        "onboarding",
+        "what anchors this"
+      ]
     },
     {
       "id": "engram-gen",
@@ -45,7 +64,7 @@
     {
       "id": "engram-learn",
       "status": "placeholder",
-      "summary": "Capture bi-temporal mistakes manually — lands in v0.3.0"
+      "summary": "Capture bi-temporal mistakes manually with interactive 4-field prompt — lands in v0.3.0"
     }
   ]
 }

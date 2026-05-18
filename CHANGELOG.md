@@ -2,6 +2,30 @@
 
 All notable changes to engram-skill-pack will be documented in this file. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.0] — 2026-05-18 — "Structural Bootstrap"
+
+Three active skills now. `engram-mistakes` (the rave moment) is joined by two skills that bootstrap repo understanding before the agent makes its first edit: `engram-query` (structural lookups) and `engram-gods` (importance ranking). Together they replace 10-20 turns of `ls`/`Grep`/`Read` browsing with 2-3 budgeted invocations under 5 KB total context.
+
+### Added
+
+- **`engram-query`** auto-discoverable skill. Wraps `engramx query` with natural-language trigger patterns for structural questions: "where is X defined", "what calls X", "explain the architecture", "show me dependencies of X". Five-term ranking formula (text match + query count + recency + co-change density + confidence) returns 5-15 entities ranked by relevance within a token budget. Default budget 2000 tokens — the agent gets entity references + summaries + edges, then `Read`s the surfaced files only when source is needed. Replaces ad-hoc Grep for structural questions at a fraction of the token cost.
+- **`engram-gods`** auto-discoverable skill. Wraps `engramx gods` to surface the top N entities by importance score (graph degree + query count + co-change density + recency + confidence). Auto-fires on onboarding/orientation questions: "where do I start", "what's important here", "what are the main classes". Test files excluded by default. Kind filter supports `class`/`function`/`module`/`decision` etc. for targeted top-N lists. Healthy mixed-kind output is the design — the actual top of a repo includes code AND ADRs.
+- **8 new reference files** under `skills/engram-query/references/` and `skills/engram-gods/references/`: `query-ranking.md` / `importance-score.md` (the underlying score math), `output-format.md` (byte-level layout spec), `trigger-patterns.md` (reactive trigger matrix), `anti-patterns.md` (12 documented failure modes), `evaluation.md` (5-dimension 0/2/4 scoring framework).
+- **Skill-manifest schema bump:** every active skill now has its `triggers` array populated. The marketplace can index by trigger phrase.
+
+### Changed
+
+- **Manifest status:** `engram-query` and `engram-gods` flipped from `placeholder` → `active`. The two skills that remain in placeholder state (`engram-gen`, `engram-learn`) target v0.3.0.
+
+### Still placeholder (queued for v0.3.0)
+
+- `engram-gen` — generate task-grounded context prompts. Wraps `engramx gen --task <kind>`.
+- `engram-learn` — interactive 4-field bi-temporal mistake capture. Wraps `engramx learn --interactive` (interactive mode lands in engramx v4.0.x).
+
+### Compatibility
+
+Same as v0.1.0: requires `engramx >= 4.0.0`, Node ≥22, Apache-2.0. Falls back gracefully on older engramx — query and gods both work on v3.x but without the v9 schema additions.
+
 ## [0.1.0] — 2026-05-18 — "Memory Preview"
 
 First public release. Ships the hero skill and the marketplace plumbing so the remaining four skills can land incrementally without restructuring the pack.

@@ -53,13 +53,13 @@ describe("skill-manifest.json shape", () => {
     assert.ok(m.skills.length > 0, "skills not empty");
   });
 
-  test("declares exactly 5 skill slots (1 active + 4 placeholders for v0.1.0)", () => {
+  test("declares exactly 5 skill slots (3 active + 2 placeholders for v0.2.0)", () => {
     const m = readJson("skill-manifest.json");
     assert.equal(m.skills.length, 5, "5 skill slots");
     const active = m.skills.filter((s) => s.status === "active");
     const placeholders = m.skills.filter((s) => s.status === "placeholder");
-    assert.equal(active.length, 1, "1 active in v0.1.0");
-    assert.equal(placeholders.length, 4, "4 placeholders queued");
+    assert.equal(active.length, 3, "3 active in v0.2.0");
+    assert.equal(placeholders.length, 2, "2 placeholders queued for v0.3.0");
   });
 
   test("every active skill has id, path, summary", () => {
@@ -185,6 +185,106 @@ describe("verify-manifest script", () => {
   test("scripts/verify-manifest.js exists and is parseable as ESM", async () => {
     const path = join(REPO, "scripts/verify-manifest.js");
     assert.ok(existsSync(path), "verify-manifest.js exists");
+  });
+});
+
+describe("engram-query skill structure (v0.2.0)", () => {
+  test("SKILL.md exists at the path declared in manifest", () => {
+    const m = readJson("skill-manifest.json");
+    const skill = m.skills.find((s) => s.id === "engram-query");
+    assert.ok(skill, "engram-query entry exists");
+    assert.equal(skill.status, "active");
+    assert.ok(existsSync(join(REPO, skill.path)), `SKILL.md exists at ${skill.path}`);
+  });
+
+  test("frontmatter validates", () => {
+    const fm = parseFrontmatter("skills/engram-query/SKILL.md");
+    assert.equal(fm.name, "engram-query");
+    assert.ok(fm.description);
+    assert.ok(fm.description.length <= 250, `description ≤250 chars (was ${fm.description.length})`);
+    assert.equal(fm.license, "Apache-2.0");
+    assert.ok(fm.requires.includes("engramx"));
+  });
+
+  test("SKILL.md has all required Layer sections", () => {
+    const text = readText("skills/engram-query/SKILL.md");
+    assert.ok(/Layer 1 .*Control Dials/i.test(text));
+    assert.ok(/Layer 2 .*Core Principles/i.test(text));
+    assert.ok(/Layer 3 .*Decision Tree/i.test(text));
+    assert.ok(/Layer 4 .*Query Variants/i.test(text));
+    assert.ok(/Layer 7 .*Quality Gate/i.test(text));
+  });
+
+  test("Layer 3 has ≥3 decision-tree branches", () => {
+    const text = readText("skills/engram-query/SKILL.md");
+    const branches = (text.match(/[├└]──/g) ?? []).length;
+    assert.ok(branches >= 3, `Layer 3 ≥3 branches (found ${branches})`);
+  });
+
+  test("all 4 reference files exist", () => {
+    const refs = ["query-ranking.md", "output-format.md", "trigger-patterns.md", "anti-patterns.md", "evaluation.md"];
+    for (const r of refs) {
+      assert.ok(existsSync(join(REPO, "skills/engram-query/references", r)), `${r} exists`);
+    }
+  });
+
+  test("anti-patterns ≥7 + evaluation ≥4", () => {
+    const ap = readText("skills/engram-query/references/anti-patterns.md");
+    const apCount = (ap.match(/^## \d+\./gm) ?? []).length;
+    assert.ok(apCount >= 7, `anti-patterns ≥7 (found ${apCount})`);
+    const ev = readText("skills/engram-query/references/evaluation.md");
+    const evCount = (ev.match(/^## \d+\./gm) ?? []).length;
+    assert.ok(evCount >= 4, `evaluation ≥4 (found ${evCount})`);
+  });
+});
+
+describe("engram-gods skill structure (v0.2.0)", () => {
+  test("SKILL.md exists at the path declared in manifest", () => {
+    const m = readJson("skill-manifest.json");
+    const skill = m.skills.find((s) => s.id === "engram-gods");
+    assert.ok(skill, "engram-gods entry exists");
+    assert.equal(skill.status, "active");
+    assert.ok(existsSync(join(REPO, skill.path)), `SKILL.md exists at ${skill.path}`);
+  });
+
+  test("frontmatter validates", () => {
+    const fm = parseFrontmatter("skills/engram-gods/SKILL.md");
+    assert.equal(fm.name, "engram-gods");
+    assert.ok(fm.description);
+    assert.ok(fm.description.length <= 250, `description ≤250 chars (was ${fm.description.length})`);
+    assert.equal(fm.license, "Apache-2.0");
+    assert.ok(fm.requires.includes("engramx"));
+  });
+
+  test("SKILL.md has all required Layer sections", () => {
+    const text = readText("skills/engram-gods/SKILL.md");
+    assert.ok(/Layer 1 .*Control Dials/i.test(text));
+    assert.ok(/Layer 2 .*Core Principles/i.test(text));
+    assert.ok(/Layer 3 .*Decision Tree/i.test(text));
+    assert.ok(/Layer 4 .*Onboarding Variants/i.test(text));
+    assert.ok(/Layer 7 .*Quality Gate/i.test(text));
+  });
+
+  test("Layer 3 has ≥3 decision-tree branches", () => {
+    const text = readText("skills/engram-gods/SKILL.md");
+    const branches = (text.match(/[├└]──/g) ?? []).length;
+    assert.ok(branches >= 3, `Layer 3 ≥3 branches (found ${branches})`);
+  });
+
+  test("all 4 reference files exist", () => {
+    const refs = ["importance-score.md", "output-format.md", "trigger-patterns.md", "anti-patterns.md", "evaluation.md"];
+    for (const r of refs) {
+      assert.ok(existsSync(join(REPO, "skills/engram-gods/references", r)), `${r} exists`);
+    }
+  });
+
+  test("anti-patterns ≥7 + evaluation ≥4", () => {
+    const ap = readText("skills/engram-gods/references/anti-patterns.md");
+    const apCount = (ap.match(/^## \d+\./gm) ?? []).length;
+    assert.ok(apCount >= 7, `anti-patterns ≥7 (found ${apCount})`);
+    const ev = readText("skills/engram-gods/references/evaluation.md");
+    const evCount = (ev.match(/^## \d+\./gm) ?? []).length;
+    assert.ok(evCount >= 4, `evaluation ≥4 (found ${evCount})`);
   });
 });
 
