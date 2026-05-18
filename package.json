@@ -1,0 +1,53 @@
+{
+  "name": "engram-skill-pack",
+  "version": "0.1.0",
+  "description": "engramx's AST code-graph + bi-temporal mistakes as auto-discoverable Claude Code Skills",
+  "license": "Apache-2.0",
+  "author": "Nicholas Ashkar <nicholas.ashkar@gmail.com> (@NickCirv)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NickCirv/engram-skill-pack.git"
+  },
+  "homepage": "https://github.com/NickCirv/engram-skill-pack#readme",
+  "bugs": {
+    "url": "https://github.com/NickCirv/engram-skill-pack/issues"
+  },
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "keywords": [
+    "claude-code",
+    "claude-skills",
+    "engram",
+    "engramx",
+    "ai-memory",
+    "ast",
+    "mcp",
+    "developer-tools",
+    "npm-package",
+    "bi-temporal"
+  ],
+  "scripts": {
+    "test": "node --test 'tests/*.js'",
+    "verify-manifest": "node scripts/verify-manifest.js",
+    "prepublishOnly": "pnpm verify-manifest && pnpm test",
+    "postinstall": "node scripts/postinstall.js"
+  },
+  "peerDependencies": {
+    "engramx": ">=4.0.0"
+  },
+  "peerDependenciesMeta": {
+    "engramx": {
+      "optional": true
+    }
+  },
+  "files": [
+    "skills/",
+    "skill-manifest.json",
+    "scripts/postinstall.js",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ]
+}

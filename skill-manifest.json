@@ -1,0 +1,51 @@
+{
+  "name": "engram-skill-pack",
+  "version": "0.1.0",
+  "description": "engramx's AST code-graph + bi-temporal mistakes as auto-discoverable Claude Code Skills",
+  "author": "Nicholas Ashkar (@NickCirv)",
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/NickCirv/engram-skill-pack",
+  "requires": [
+    { "type": "cli", "name": "engramx", "version": ">=4.0.0" }
+  ],
+  "skills": [
+    {
+      "id": "engram-mistakes",
+      "status": "active",
+      "path": "skills/engram-mistakes/SKILL.md",
+      "summary": "Surface bi-temporal mistakes from this repo before your agent repeats them",
+      "triggers": [
+        "have i made this before",
+        "any mistakes",
+        "what did i learn",
+        "remind me of past attempts",
+        "did i try this already"
+      ],
+      "pre_tool_use": {
+        "tools": ["Edit", "Write", "Bash"],
+        "file_path_matches": "\\.(ts|tsx|js|jsx|py|rb|go|rs|java|c|cpp|cs|php)$",
+        "file_path_excludes": "node_modules|dist|build|\\.next|\\.nuxt|coverage"
+      }
+    },
+    {
+      "id": "engram-query",
+      "status": "placeholder",
+      "summary": "Natural-language code-graph queries — lands in v0.2.0"
+    },
+    {
+      "id": "engram-gods",
+      "status": "placeholder",
+      "summary": "Surface the most-important entities in this repo — lands in v0.2.0"
+    },
+    {
+      "id": "engram-gen",
+      "status": "placeholder",
+      "summary": "Generate task-grounded context prompts — lands in v0.3.0"
+    },
+    {
+      "id": "engram-learn",
+      "status": "placeholder",
+      "summary": "Capture bi-temporal mistakes manually — lands in v0.3.0"
+    }
+  ]
+}
