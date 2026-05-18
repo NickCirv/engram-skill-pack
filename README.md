@@ -1,8 +1,13 @@
 # engram-skill-pack
 
-> engramx's AST code-graph + bi-temporal mistakes, as auto-discoverable Claude Code Skills.
+> **One command installs engram in Claude Code.** Three auto-discoverable Skills that catch recurring mistakes, answer structural questions, and bootstrap repo understanding. Wraps [engramx](https://github.com/NickCirv/engram) — the underlying AST + bi-temporal mistakes engine — into the Anthropic Claude Code Marketplace format.
 
-**v0.2.0 "Structural Bootstrap"** — three active skills, two queued for v0.3.0. The pack covers the full "before-you-make-the-edit" loop: orient the agent in a new repo, answer structural questions, surface past mistakes. All under 5 KB of context.
+```bash
+# Install both at once:
+npm i -g engramx && npx @anthropic-ai/claude-code add nickcirv/engram-skill-pack
+```
+
+**v0.2.0 "Structural Bootstrap"** ships three active skills. Two more queued for v0.3.0 (gen + learn). Full "before-you-make-the-edit" loop in under 5 KB of context.
 
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
 [![npm](https://img.shields.io/badge/npm-engram--skill--pack-cb3837)](https://www.npmjs.com/package/engram-skill-pack)
@@ -17,6 +22,19 @@
 **Skills:** [engram-mistakes](skills/engram-mistakes/SKILL.md) · [engram-query](skills/engram-query/SKILL.md) · [engram-gods](skills/engram-gods/SKILL.md) · *engram-gen (v0.3)* · *engram-learn (v0.3)*
 
 **Sections:** [Install](#install) · [The Five Skills](#the-five-skills) · [How is this different from claude-mem?](#how-is-this-different-from-claude-mem) · [FAQ](#faq) · [Roadmap](#roadmap) · [Privacy](#privacy)
+
+---
+
+## Three questions answered in 30 seconds
+
+**Q: Why install this if I already have engramx?**
+The skill-pack is the Claude Code Marketplace surface for engramx. Same data, different discovery path — Claude Code's auto-discovery mechanism fires the right engramx query when you ask "any mistakes here?" or "what's important in this repo?" without you having to remember the CLI. Install it alongside engramx, not instead of.
+
+**Q: What if I use Cursor / Continue / VS Code instead of Claude Code?**
+You don't need this pack. Different IDEs have different engramx wrappers — `engramx-continue` (npm) for Continue.dev, `nickcirv.engram-vscode` (OpenVSX) for VS Code/Cursor. All three plus this pack read the same `~/.engram/graph.db` underneath. Install engramx once, surface it everywhere.
+
+**Q: Does this leak my code anywhere?**
+No. The pack ships zero egress. engramx (the peer dependency) routes all graph data through local SQLite at `~/.engram/` and `<project>/.engram/`. No network calls during install or skill invocation. Safe on air-gapped workstations. Apache-2.0.
 
 ---
 
