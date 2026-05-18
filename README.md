@@ -25,6 +25,20 @@ npm i -g engramx && npx @anthropic-ai/claude-code add nickcirv/engram-skill-pack
 
 ---
 
+## See it in 30 seconds
+
+<p align="center">
+  <a href="https://asciinema.org/a/GjjvPXVyArnivAog">
+    <img src="https://asciinema.org/a/GjjvPXVyArnivAog.svg" alt="engram v4.0 demo — bi-temporal mistakes auto-captured from git revert (30 seconds)" width="100%">
+  </a>
+</p>
+
+<p align="center">
+  <sub>The pack ships these skills as the Claude Code Marketplace surface for what the recording shows. Same engramx underneath, different discovery mechanism.</sub>
+</p>
+
+---
+
 ## Three questions answered in 30 seconds
 
 **Q: Why install this if I already have engramx?**
