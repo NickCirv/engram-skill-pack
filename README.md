@@ -2,11 +2,21 @@
 
 > engramx's AST code-graph + bi-temporal mistakes, as auto-discoverable Claude Code Skills.
 
-**v0.2.0 "Structural Bootstrap"** — three active skills, two queued for v0.3.0. The pack now covers the full "before-you-make-the-edit" loop: orient the agent in a new repo, answer structural questions, surface past mistakes. All under 5 KB of context.
+**v0.2.0 "Structural Bootstrap"** — three active skills, two queued for v0.3.0. The pack covers the full "before-you-make-the-edit" loop: orient the agent in a new repo, answer structural questions, surface past mistakes. All under 5 KB of context.
 
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
 [![npm](https://img.shields.io/badge/npm-engram--skill--pack-cb3837)](https://www.npmjs.com/package/engram-skill-pack)
 [![requires engramx](https://img.shields.io/badge/requires-engramx_%E2%89%A5_4.0.0-d97706)](https://github.com/NickCirv/engram)
+[![skills](https://img.shields.io/badge/skills-3_active_/_2_queued-f59e0b)](skill-manifest.json)
+[![tests](https://img.shields.io/badge/tests-36_passing-34d399)](tests/)
+[![marketplace](https://img.shields.io/badge/Claude_Code-Marketplace_ready-60a5fa)](#install)
+[![bundle](https://img.shields.io/badge/install_size-115KB-8a8a8a)](package.json)
+[![cloud](https://img.shields.io/badge/cloud_calls-zero-34d399)](#privacy)
+[![node](https://img.shields.io/badge/node-%E2%89%A5_22-339933)](package.json)
+
+**Skills:** [engram-mistakes](skills/engram-mistakes/SKILL.md) · [engram-query](skills/engram-query/SKILL.md) · [engram-gods](skills/engram-gods/SKILL.md) · *engram-gen (v0.3)* · *engram-learn (v0.3)*
+
+**Sections:** [Install](#install) · [The Five Skills](#the-five-skills) · [How is this different from claude-mem?](#how-is-this-different-from-claude-mem) · [FAQ](#faq) · [Roadmap](#roadmap) · [Privacy](#privacy)
 
 ---
 
